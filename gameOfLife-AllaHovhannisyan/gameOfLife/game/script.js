@@ -173,3 +173,15 @@ function draw() {
      console.log(predatorArr);
     }
 
+const obj = {
+    firstname: "Alla",
+    lastname: "Hovhannisyan",
+    age: 16,
+    student: true,
+}
+const obj2 = {
+    "firstname": "Alla",
+    "lastname": "Hovhannisyan",
+    age: 16,
+    student: true,
+}
