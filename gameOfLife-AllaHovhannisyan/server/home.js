@@ -1,4 +1,4 @@
-class Home{
+module.exports = class Home{
     constructor(x,y){
               this.x = x
               this.y = y

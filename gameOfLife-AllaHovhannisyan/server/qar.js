@@ -1,4 +1,4 @@
-class Qar{
+module.exports = class Qar{
     constructor(x,y){
               this.x = x
               this.y = y
