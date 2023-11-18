@@ -1,4 +1,6 @@
-module.exports = class Home{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Home  extends LivingCreature{
     constructor(x,y){
               this.x = x
               this.y = y
@@ -57,7 +59,7 @@ module.exports = class Home{
 
   mul() {
       let emptyCell = this.chooseCell(0);
-      let newCell = random(emptyCell)
+      let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
  
       if (newCell && this.energy > 5) {
           let newX = newCell[0];
@@ -74,7 +76,7 @@ module.exports = class Home{
 
   eat() {
       let emptyCell = this.chooseCell(1,2,3);
-      let newCell = random(emptyCell)
+      let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
       if (newCell) {
           this.energy += 5;
@@ -123,7 +125,7 @@ module.exports = class Home{
   }
   move() {
       let emptyCell = this.chooseCell(0);
-      let newCell = random(emptyCell)
+      let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
       if (newCell) {
           let newX = newCell[0];

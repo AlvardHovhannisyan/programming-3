@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var fs = require("fs");
+let express = require('express');
+let app = express();
+let server = require('http').Server(app);
+let io = require('socket.io')(server);
+let fs = require("fs");
 
 app.use(express.static("../client"));
 
@@ -14,7 +14,7 @@ server.listen(3000, () => {
 });
 
 function matrixGenerator(matrixSize, grass, grassEater, predator, qar, home) {
-    var matrix = []
+    let matrix = []
 
     for (let i = 0; i < matrixSize; i++) {
         matrix.push([])
@@ -27,8 +27,8 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, qar, home) {
 
     for (let i = 0; i < grass; i++) {
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
 
         matrix[y][x] = 1
 
@@ -36,8 +36,8 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, qar, home) {
 
     for (let i = 0; i < grassEater; i++) {
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
 
         matrix[y][x] = 2
 
@@ -47,8 +47,8 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, qar, home) {
 
     for (let i = 0; i < predator; i++) {
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
 
         matrix[y][x] = 3
 
@@ -57,22 +57,22 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, qar, home) {
 
     for (let i = 0; i < qar; i++) {
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
 
         matrix[y][x] = 4
     }
     for (let i = 0; i < home; i++) {
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
 
         matrix[y][x] = 5
     }
     return matrix
 }
 
-var matrix = matrixGenerator(30, 40, 15, 5, 7, 25)
+ matrix = matrixGenerator(30, 40, 15, 5, 7, 25)
 
 io.sockets.emit('send matrix', matrix)
 
@@ -82,30 +82,30 @@ predatorArr = [];
 homeArr = [];
 qarArr = [];
 
-grass = require("./grass");
-grassEater = require("./grassEater");
-predator = require("./predator");
-home = require("./home");
-qar = require("./qar");
+Grass = require("./grass");
+GrassEater = require("./grassEater");
+Predator = require("./predator");
+Home = require("./home");
+Qar = require("./qar");
 
 function createObject(matrix) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y)
+                let gr = new Grass(x, y)
                 grassArr.push(gr)
             } else if (matrix[y][x] == 2) {
-                var grEat = new GrassEater(x, y)
+                let grEat = new GrassEater(x, y)
                 grassEaterArr.push(grEat)
             } else if (matrix[y][x] == 3) {
-                var pred = new Predator(x, y)
+                let pred = new Predator(x, y)
                 predatorArr.push(pred)
             } else if (matrix[y][x] == 4) {
-                var qar = new Qar(x, y)
+                let qar = new Qar(x, y)
                 qarArr.push(qar)
             } else if (matrix[y][x] == 5) {
-                var home = new Home(x, y)
+                let home = new Home(x, y)
                 homeArr.push(home)
             }
         }
