@@ -1,53 +1,41 @@
-var socket = io()
+var socket = io();
 
-var side = 25
+var side = 25;
 
 
-var grassArr = []
-var grassEaterArr = []
-var predatorArr = []
-var qarArr = []
-var homeArr = []
+var grassArr = [];
+var grassEaterArr = [];
+var predatorArr = [];
+var qarArr = [];
+var homeArr = [];
 
 function addPredator() {
-    for (let i = 0; i < 7; i++) {
-        var x = Math.floor(Math.random() * matrix[0].length)
-        var y = Math.floor(Math.random() * matrix.length)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 3
-            var pred = new Predator(x, y)
-            predatorArr.push(pred)
-        }
-    }
+    socket.emit("addPredator")
 }
 
 function addGrasseater() {
-    for (let i = 0; i < 6; i++) {
-        var x = Math.floor(Math.random() * matrix[0].length)
-        var y = Math.floor(Math.random() * matrix.length)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 4
-            var grassEater = new GrassEater(x, y)
-            grassEaterArr.push(grassEater)
-        }
-    }
+    socket.emit("addGrasseater")
 }
 function addQar() {
-    for (let i = 0; i < 8; i++) {
-        var x = Math.floor(Math.random() * matrix[0].length)
-        var y = Math.floor(Math.random() * matrix.length)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 2
-            var qar = new Qar(x, y)
-            qarArr.push(qar)
-        }
-    }
+   socket.emit("addQar")
 }
 
 function setup() {
     frameRate(15)
-    createCanvas(30 * side, 30* side)
+    createCanvas(30 * side, 30 * side)
+
+    var canvas = document.querySelector('canvas');
+
+    canvas.addEventListener('click', handleCanvasClick);
 }
+
+function handleCanvasClick(event) {
+    var mouseX = event.clientX - canvas.getBoundingClientRect().left;
+    var mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+    console.log('Canvas clicked at', mouseX, mouseY);
+}
+
 
 
 

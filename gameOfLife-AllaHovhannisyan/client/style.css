@@ -61,6 +61,7 @@ main{
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  cursor: pointer;
 }
 .buttons{
     background-image: url(https://i.pinimg.com/564x/91/db/e0/91dbe0c16b8968f04525212603ad4360.jpg);
@@ -68,6 +69,21 @@ main{
     display:inline-block;
     margin-left: 150px;
     font-family: 'Indie Flower', cursive;
+}
+.weather{
+    color: rgb(211, 200, 200);
+    background-color: #4CAF50; 
+    font-size: 16px;
+    cursor: pointer;
+}
+.weathers{
+    background-image: url(https://i.pinimg.com/564x/91/db/e0/91dbe0c16b8968f04525212603ad4360.jpg);
+    color: rgb(240, 234, 234);
+    background-color: brown;
+    border: none;
+    padding: 15px 32px;
+    cursor: pointer;
+    text-align:justify;
 }
 .a{
     color: rgb(0, 0, 0);

@@ -9,6 +9,7 @@ app.use(express.static("../client"));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
+
 server.listen(3000, () => {
     console.log('connected');
 });
@@ -133,6 +134,59 @@ function game() {
 }
 setInterval(game, 1000)
 
-io.on('connection', function () {
-    createObject(matrix)
+function addPredator() {
+    console.log("pppppppppppppppppppppp====>>>>>>>");
+    for (let i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+            var pred = new Predator(x, y)
+            predatorArr.push(pred)
+        }
+    }
+}
+function addGrasseater() {
+    console.log("aaaaaaaaa")
+    for (let i = 0; i < 6; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            var grassEater = new GrassEater(x, y)
+            grassEaterArr.push(grassEater)
+        }
+    }
+}
+function addQar() {
+    console.log("bbbbbbbbbbbbbbb")
+    for (let i = 0; i < 8; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 2
+            var qar = new Qar(x, y)
+            qarArr.push(qar)
+        }
+    }
+}
+
+
+io.on('connection', function (socket) {
+    createObject(matrix);
+
+    socket.on("addPredator",addPredator);
+    
+})
+io.on('connection', function (socket) {
+    createObject(matrix);
+
+    socket.on("addGrasseater",addGrasseater);
+    
+})
+io.on('connection', function (socket) {
+    createObject(matrix);
+
+    socket.on("addQar",addQar);
+    
 })
