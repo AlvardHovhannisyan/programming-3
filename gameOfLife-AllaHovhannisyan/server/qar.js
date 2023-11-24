@@ -2,11 +2,9 @@ let LivingCreature = require('./LivingCreature')
 
 module.exports = class Qar extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.energy = 10;
     }
-    
-
 
     getNewCoordinates() {
         this.directions = [

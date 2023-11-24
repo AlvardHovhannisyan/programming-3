@@ -66,3 +66,30 @@ setInterval(
         socket.on('send matrix', nkarel)
     }, 1000
 )
+function changeBackground(season) {
+    var body = document.body;
+
+    document.getElementById('spring').style.backgroundColor = '#aaffaa';
+      document.getElementById('summer').style.backgroundColor = '#ffcc00';
+      document.getElementById('autumn').style.backgroundColor = '#ff9933';
+      document.getElementById('winter').style.backgroundColor = '#66ccff';
+
+    switch (season) {
+      case 'spring':
+        body.style.backgroundColor = '#aaffaa';
+        document.getElementById('spring').style.backgroundColor = 'lightgreen';
+        break;
+      case 'summer':
+        body.style.backgroundColor = '#ffcc00';
+        document.getElementById('summer').style.backgroundColor = 'yellow';
+        break;
+      case 'autumn':
+        body.style.backgroundColor = '#ff9933';
+        document.getElementById('autumn').style.backgroundColor = 'darkorange';
+        break;
+      case 'winter':
+        body.style.backgroundColor = '#66ccff';
+        document.getElementById('winter').style.backgroundColor = 'lightblue';
+        break;
+    }
+  }
